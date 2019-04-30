@@ -1,17 +1,10 @@
-<?php
-$arrLinksMenu = [
- 'aboutMe.php' => 'Главная',
- 'amenities.php' => 'Услуги',
- 'myWork.php' => 'Мои работы',
- 'news.php' => 'Новости',
- 'usefulArticle.php' => 'Полезные статьи',
- 'contacts.php' => 'Контакты'
-];
-echo '<div><ul>';
-foreach($arrLinksMenu as $key => $elem)
-{
-	echo '<li class="elementMenu" href="'.$key.'">' . $elem . '</li>';
-}
-echo '</ul></div>';
-		
-?>
+<div>
+	<ul>
+		<li class="elementMenu" href="aboutMe.php">Главная</li>
+		<li class="elementMenu" href="amenities.php">Услуги</li>
+		<li class="elementMenu" href="myWork.php">Мои работы</li>
+		<li class="elementMenu" href="news.php">Новости</li>
+		<li class="elementMenu" href="usefulArticle.php">Полезные статьи</li>
+		<li class="elementMenu" href="contacts.php">Контакты</li>
+	</ul>
+</div>	

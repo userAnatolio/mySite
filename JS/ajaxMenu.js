@@ -6,7 +6,7 @@
 				data: "page=" + get,
 				success: function(data)
 					{
-						$('#content').html(data);
+						$('#baner').html(data);
 					}
 		});
 	
