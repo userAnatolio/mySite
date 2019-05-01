@@ -9,6 +9,28 @@
 		font-family: 'Gugi', cursive;
 	} 
 		
+				/*style seo ****************************************/
+	#seoContent {
+		background: #2b3133;
+		color: #6ca0cb;
+	}
+	
+	p {
+		color: #c6d4cc;
+	}
+	
+	a {
+		color: #6ca0cb;
+		text-decoration: none;
+	}
+	
+	a:hover, span {
+		color: #e8c23a;
+	}
+	
+	a:hover b {
+		color: #a1d036;
+	}
 		
 	#wrapper
 	{
@@ -30,20 +52,30 @@
 	}
 	
 	
-	main{}
+	main{background: #2b3133}
 	
 	#banerFather{position: absolute;}
 	
 	#baner
 	{
+		color: #2B3133;
 		min-height: 400px;
 		max-height: 450px;
 		min-width: 610px;
 		max-width: 600px;
-		border: 1px solid black;
 		position: absolute;
 		bottom: 10px;
 		left: 310px;
+	}
+	
+	#baner a
+	{
+		color: #2B3133;
+	}
+	
+	#baner a:hover
+	{
+		color: #FF4F1C;
 	}
 	
 	
@@ -205,3 +237,22 @@
 			-webkit-transform-origin:  center;
 		}
 	}
+	
+	#sqlTable
+	{
+		background: #5d5d5d;
+		color: white;
+	}
+	
+	#sqlTable td
+	{
+		border: 1px solid;
+		width: 100px;
+		height: 30px;
+	}
+	
+	.red {
+			background: black;
+			text-align: center;
+		}
+		

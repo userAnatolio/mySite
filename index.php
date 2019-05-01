@@ -1,31 +1,33 @@
 <?php
 session_start();
+include 'db/db.php';
 //***************************************************************************************
 //Эта часть кода работает с файлом .htaccess
 	if($_SERVER['REQUEST_URI'] == '/mySite/') $page = 'home';
 		else
 		{
 			$page = substr($_SERVER['REQUEST_URI'], 8);
-			if(!preg_match('#^[A-z0-9]{3,15}$#', $page)) exit('error url');
+			if(!preg_match('#.{3,50}#', $page)) exit('error url');
 		}
 		
 	//$_SESSION['u_login'] == 3;
 	//Здесь еще будет добавлено условие - "если пользователь отмечен в сессии"
 	$statusPage = true;
-	if(file_exists('all/' . $page . '.php')) include 'all/' . $page . '.php';
-	else if(file_exists('auth/' . $page . '.php')) include 'auth/' . $page . '.php';
-	else if(file_exists('guest/' . $page . '.php')) include 'guest/' . $page . '.php';
-	else
-	{
-		if($page != 'home') 
-		{
-			$statusPage = false;
-		}
-	}
+	// if(file_exists('all/' . $page . '.php')) include 'all/' . $page . '.php';
+	// else if(file_exists('auth/' . $page . '.php')) include 'auth/' . $page . '.php';
+	// else if(file_exists('guest/' . $page . '.php')) include 'guest/' . $page . '.php';
+	// else if(file_exists('content/' . $page . '.php')) include 'content/' . $page . '.php';
+	// else
+	// {
+		// if($page != 'home') 
+		// {
+			// $statusPage = false;
+		// }
+	// }
 	//var_dump($page);
 //****************************************************************************************
-
-	if($page == 'home') $title = 'home';
+	$titlePage = $_GET['titlePage'];
+	if($page == 'home') $titlePage = 'home';
 	
 	//Создаем переменную с содержимым иконок соц. сетей
 	if(file_exists('linkIcon/linkIcon.php'))
@@ -50,7 +52,9 @@ session_start();
 // Создаем переменную с содержимым контента
 	if(file_exists('content/content.php'))
 	{
-		$htmlContent = file_get_contents('content/content.php');
+		if(!empty($_GET['nameTable']) and !empty($_GET['nameText']))
+		$htmlContent = getHtmlContent($link);
+		else $htmlContent = file_get_contents('content/content.php');
 	}
 	else
 	{
@@ -77,6 +81,4 @@ if(file_exists('DOM/DOM.php') and $statusPage)
 	{
 		include 'content/notFind.php';
 	}
-	
-	
-?>
+

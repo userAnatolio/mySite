@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta charset="utf-8">	
-		<title><?php echo $title ?></title>
+		<title><?php echo $titlePage ?></title>
 		<link rel="stylesheet" href="/mySite/css/style.css">
 		<link href = "https://fonts.googleapis.com/css?family= Gugi " rel = "stylesheet">
 		<script src="jQuery/jQuery.js"></script>

@@ -4,14 +4,14 @@
 <meta charset="utf-8"> 
 <title>Что такое seo и как оптимизировать сайт?</title> 
 <meta name="description" content="Что такое seo, как оптимизировать сайт, что такое ключевые слова, полезные советы начинающим"/>
-<link rel="stylesheet" href="/mySite/css/seo.css">
+<link rel="stylesheet" href="css/seo.css">
 <style> 
 
 </style> 
 </head> 
 
 <body>
-
+<div id="seoContent">
 <div>
     <h1>SEO</h1>
     <ul>
@@ -165,6 +165,6 @@ AdWords<br>
     <a href="http://blogarbik.ru/?p=1475" target="_blank"><span><b>Продвижение сайта ссылками</b></span></a>
     </p>
 </div>
-
+</div>
 </body> 
 </html>
