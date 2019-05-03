@@ -7,15 +7,15 @@
 	$link = mysqli_connect($host, $user, $password, $db_name);
 	mysqli_query($link, "SET NAMES UTF8");
 	
-	function getHtmlContent($link)
+	function getDataContentPage($link)
 		{
 			$nameTable = $_GET['nameTable'];
 			$nameText = $_GET['nameText'];
-			$query = "SELECT `id`, `name_text`, `text_content` FROM $nameTable HAVING `name_text`='".$nameText."'";
+			$query = "SELECT `id`, `name_text`, `text_content`, `title_text`, `url_page` FROM $nameTable HAVING `name_text`='".$nameText."'";
 			$getSql = mysqli_query($link, $query) or die(mysqli_error($link));
 			for($data=[]; $result = mysqli_fetch_assoc($getSql); $data[]=$result);
-			return $data[0]['text_content'];
+			return $data;
 		}
-
+		
 	
 ?>

@@ -1,23 +1,30 @@
-
-<div id="pageMenu">
-<ul>
-<li><a href="#">Как я сделал сайт</a></li>
-<li><a href="?nameTable=text_content&titlePage=seo&nameText=seo">SEO</a></li>
-<li><a href="#">Полезные инструменты</a></li>
-<li><a href="#">HTML</a></li>
-<li><a href="#">CSS</a></li>
-<li><a href="#">JavaScript</a></li>
-<li><a href="#">jQuery</a></li>
-<li><a href="#">PHP</a></li>
-<li><a href="#">PHPjQuery</a></li>
-<li><a href="#">mySql</a></li>
-<li><a href="#">C</a></li>
-<li><a href="#">C++</a></li>
-<li><a href="#">C#</a></li>
-<li><a href="#">Linux</a></li>
-<li><a href="#">GIT</a></li>
-<li><a href="#">Статья1</a></li>
-<li><a href="#">Статья2</a></li>
-<li><a href="#">Статья3</a></li>
-</ul>
-</div>
+<?php
+	$host = 'localhost';
+	$user = 'root';
+	$password = '';
+	$db_name = 'my_site';
+	$link = mysqli_connect($host, $user, $password, $db_name);
+	mysqli_query($link, "SET NAMES UTF8");
+	
+	function getDataLinkPage($link)
+		{
+			$query = "SELECT `id`, `name_text`, `text_content`, `title_text`, `url_page` FROM `text_content`";
+			$getSql = mysqli_query($link, $query) or die(mysqli_error($link));
+			for($data=[]; $result = mysqli_fetch_assoc($getSql); $data[]=$result);
+			return $data;
+		}
+	$dataLink = getDataLinkPage($link);
+	
+	function createLinkMenu($dataLink, $class)
+	{
+		echo '<div class="'.$class.'">';
+		echo '<ul>';
+		foreach($dataLink as $elem)
+		{
+		echo '<li><a href="'.$elem['url_page'].'">'.$elem['name_text'].'</a></li>';
+		}
+		echo '</ul>';
+		echo '</div>';
+	}
+	createLinkMenu($dataLink, 'test');
+ ?>

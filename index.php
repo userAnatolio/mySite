@@ -1,12 +1,13 @@
 <?php
+header( 'Content-Type: text/html; charset=utf-8' );
 session_start();
 include 'db/db.php';
 //***************************************************************************************
 //Эта часть кода работает с файлом .htaccess
-	if($_SERVER['REQUEST_URI'] == '/mySite/') $page = 'home';
+	if($_SERVER['REQUEST_URI'] == '/') $page = 'home';
 		else
 		{
-			$page = substr($_SERVER['REQUEST_URI'], 8);
+			$page = substr($_SERVER['REQUEST_URI'], 1);
 			if(!preg_match('#.{3,50}#', $page)) exit('error url');
 		}
 		
@@ -26,8 +27,28 @@ include 'db/db.php';
 	// }
 	//var_dump($page);
 //****************************************************************************************
-	$titlePage = $_GET['titlePage'];
+	
+	//Получаю данные таблицы из базы
+	if(!empty($_GET['nameTable']) and !empty($_GET['nameText']))
+	$dataBaseContent = getDataContentPage($link);
+	else 'данные не получены';
+
+	//достаю из базы Тайтл
+	function getTitle($data)
+	{
+		return $data[0]['title_text'];
+	}
+	
+	// достаю из базы основной контент
+	function getTextContent($data)
+	{
+		return $data[0]['text_content'];
+	}
+	
 	if($page == 'home') $titlePage = 'home';
+	else $titlePage = getTitle($dataBaseContent);
+	
+	
 	
 	//Создаем переменную с содержимым иконок соц. сетей
 	if(file_exists('linkIcon/linkIcon.php'))
@@ -53,7 +74,7 @@ include 'db/db.php';
 	if(file_exists('content/content.php'))
 	{
 		if(!empty($_GET['nameTable']) and !empty($_GET['nameText']))
-		$htmlContent = getHtmlContent($link);
+		$htmlContent = getTextContent($dataBaseContent);
 		else $htmlContent = file_get_contents('content/content.php');
 	}
 	else

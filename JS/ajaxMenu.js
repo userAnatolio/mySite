@@ -2,7 +2,7 @@
 		var get= $(this).attr('href');
 		$.ajax({
 				type: "GET",
-				url: '/mySite/pageMenu/' + get,
+				url: '/pageMenu/' + get,
 				data: "page=" + get,
 				success: function(data)
 					{
@@ -11,3 +11,5 @@
 		});
 	
 	});
+	
+	

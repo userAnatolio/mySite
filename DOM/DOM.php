@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">	
 		<title><?php echo $titlePage ?></title>
-		<link rel="stylesheet" href="/mySite/css/style.css">
+		<link rel="stylesheet" href="/css/style.css">
 		<link href = "https://fonts.googleapis.com/css?family= Gugi " rel = "stylesheet">
 		<script src="jQuery/jQuery.js"></script>
 	</head>
@@ -13,7 +13,7 @@
 				<?php echo $htmlLinkIcon?>
 				<header>
 						<div id="logo">
-							<a href="/mySite">Pixel.ru</a>
+							<a href="/">Pixel.ru</a>
 						</div>
 						<div id="slogan"></div>
 							<nav>
@@ -21,7 +21,13 @@
 							</nav>
 							<script src="JS/ajaxMenu.js"></script>
 						<div id="logotip"><img src=""></div>
-						<div id="banerFather"><?php echo $banerText ?><div id="baner"></div>
+						
+						<div id="banerFather"><div id="baner">
+						<?php
+						if(!empty($_GET['titlePage']) or !empty($_GET['nameText'])) include 'pageMenu/compendium.php';
+						?>
+						</div></div>
+						
 				</header>
 				<main>
 					<div id="content">
