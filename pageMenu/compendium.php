@@ -8,7 +8,8 @@
 	
 	function getDataLinkPage($link)
 		{
-			$query = "SELECT `id`, `name_text`, `text_content`, `title_text`, `url_page` FROM `text_content`";
+			$nameTable = $_GET['nameTable'];
+			$query = "SELECT `id`, `name_text`, `text_content`, `title_text`, `url_page` FROM $nameTable";
 			$getSql = mysqli_query($link, $query) or die(mysqli_error($link));
 			for($data=[]; $result = mysqli_fetch_assoc($getSql); $data[]=$result);
 			return $data;

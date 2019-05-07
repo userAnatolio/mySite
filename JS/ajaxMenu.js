@@ -2,7 +2,7 @@
 		var get= $(this).attr('href');
 		$.ajax({
 				type: "GET",
-				url: '/pageMenu/' + get,
+				url: '/pageMenu/compendium.php?' + get,
 				data: "page=" + get,
 				success: function(data)
 					{

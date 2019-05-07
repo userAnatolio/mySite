@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="/css/style.css">
 		<link href = "https://fonts.googleapis.com/css?family= Gugi " rel = "stylesheet">
 		<script src="jQuery/jQuery.js"></script>
+		<script src="https://api-maps.yandex.ru/2.1/?apikey=04667861-63a6-4e63-bb5b-ad5defc1cb28&lang=ru_RU" type="text/javascript"></script>
 	</head>
 	<body>	
 		<div id="wrapper">
