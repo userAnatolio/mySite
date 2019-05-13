@@ -1,7 +1,13 @@
 <?php
 header( 'Content-Type: text/html; charset=utf-8' );
 session_start();
-include 'db/db.php';
+spl_autoload_register(function ($class_name) {
+include 'classSite/' . $class_name . '/' . $class_name . '.php';
+});
+
+$onDb = new OnDb('my_site');
+$link = $onDb -> getLink();
+
 //***************************************************************************************
 //Эта часть кода работает с файлом .htaccess
 	if($_SERVER['REQUEST_URI'] == '/') $page = 'home';
@@ -30,8 +36,10 @@ include 'db/db.php';
 	
 	//Получаю данные таблицы из базы
 	if(!empty($_GET['nameTable']) and !empty($_GET['nameText']))
-	$dataBaseContent = getDataContentPage($link);
-	else 'данные не получены';
+	{
+	$getDataContentPageSummary = new GetDataContentPageSummary($link);
+	$dataBaseContent = $getDataContentPageSummary -> getData();
+	}
 
 	//достаю из базы Тайтл
 	function getTitle($data)

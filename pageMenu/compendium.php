@@ -18,14 +18,12 @@
 	
 	function createLinkMenu($dataLink, $class)
 	{
-		echo '<div class="'.$class.'">';
 		echo '<ul>';
 		foreach($dataLink as $elem)
 		{
 		echo '<li><a href="'.$elem['url_page'].'">'.$elem['name_text'].'</a></li>';
 		}
 		echo '</ul>';
-		echo '</div>';
 	}
 	createLinkMenu($dataLink, 'test');
  ?>
