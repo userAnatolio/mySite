@@ -5,17 +5,8 @@ body
 	} 
 		
 /*style seo ****************************************/
-	#seoContent {
-		background: #2b3133;
-		color: #6ca0cb;
-	}
-	
-	p {
-		color: #c6d4cc;
-	}
 	
 	a {
-		color: #6ca0cb;
 		text-decoration: none;
 	}
 	
@@ -23,14 +14,9 @@ body
 		color: #e8c23a;
 	}
 	
-	a:hover b {
-		color: #a1d036;
-	}
 		
 	#wrapper
 	{
-	    background: #c1c1c1;
-		width: 1000px;
 	}
 	
 	
@@ -40,7 +26,7 @@ body
 	}
 	
 	
-	main{background: #2b3133}
+	main{}
 	
 	
 	#baner
@@ -74,7 +60,6 @@ body
 	#net
 	{
 		background: #444444; 
-		height: 40px; 
 	}
 	
 	

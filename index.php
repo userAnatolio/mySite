@@ -1,8 +1,9 @@
 <?php
 header( 'Content-Type: text/html; charset=utf-8' );
+setcookie('test', $_GET['idParent']);
 session_start();
 spl_autoload_register(function ($class_name) {
-include 'classSite/' . $class_name . '/' . $class_name . '.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/classSite/'. $class_name . '/' . $class_name . '.php';
 });
 
 $onDb = new OnDb('my_site');
@@ -15,8 +16,7 @@ $link = $onDb -> getLink();
 		{
 			$page = substr($_SERVER['REQUEST_URI'], 1);
 			if(!preg_match('#.{3,50}#', $page)) exit('error url');
-		}
-		
+		}		
 	//$_SESSION['u_login'] == 3;
 	//Здесь еще будет добавлено условие - "если пользователь отмечен в сессии"
 	$statusPage = true;
@@ -34,27 +34,33 @@ $link = $onDb -> getLink();
 	//var_dump($page);
 //****************************************************************************************
 	
-	//Получаю данные таблицы из базы
-	if(!empty($_GET['nameTable']) and !empty($_GET['nameText']))
-	{
-	$getDataContentPageSummary = new GetDataContentPageSummary($link);
-	$dataBaseContent = $getDataContentPageSummary -> getData();
-	}
+	
 
-	//достаю из базы Тайтл
-	function getTitle($data)
+	//Получаю данные таблицы из базы заполняю контент содержание с якорями + текст
+	function getContent($link){
+	$idParent = $_GET['id'];
+	$getAllDataTable = new GetAllDataTable($link, $nameTable);
+	$data = $getAllDataTable -> getPages($link, $idParent);
+	echo '<h1>Содеражание страницы</h1>';
+	echo '<ol>';
+	foreach($data as $elem)
 	{
-		return $data[0]['title_text'];
+		echo '<li><a href="#'.$elem['name_text'].'">' . $elem['name_text'] . '</a></li>';
+	}
+	echo '</ol>';
+	foreach($data as $elem)
+	{
+		echo $elem['text_content'];
 	}
 	
-	// достаю из базы основной контент
-	function getTextContent($data)
-	{
-		return $data[0]['text_content'];
 	}
 	
+	//Грузим тайтл
 	if($page == 'home') $titlePage = 'home';
-	else $titlePage = getTitle($dataBaseContent);
+	else $titlePage = $_GET['titlePage'];
+	
+	require_once 'pageMenu/compendium.php';
+	
 	
 	
 	
@@ -79,16 +85,8 @@ $link = $onDb -> getLink();
 	}
 		
 // Создаем переменную с содержимым контента
-	if(file_exists('content/content.php'))
-	{
-		if(!empty($_GET['nameTable']) and !empty($_GET['nameText']))
-		$htmlContent = getTextContent($dataBaseContent);
-		else $htmlContent = file_get_contents('content/content.php');
-	}
-	else
-	{
-		$htmlContent = file_get_contents('content/notFind.php');
-	}
+	if(file_exists('content/content.php')) $htmlContent = file_get_contents('content/content.php');
+	else $htmlContent = file_get_contents('content/notFind.php');
 		
 //Создаем переменную с содержимым футера
 	if(file_exists('footer/footer.php'))
@@ -110,4 +108,7 @@ if(file_exists('DOM/DOM.php') and $statusPage)
 	{
 		include 'content/notFind.php';
 	}
+	
+?>
+
 
