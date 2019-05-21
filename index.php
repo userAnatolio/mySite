@@ -39,18 +39,21 @@ $link = $onDb -> getLink();
 	//Получаю данные таблицы из базы заполняю контент содержание с якорями + текст
 	function getContent($link){
 	$idParent = $_GET['id'];
+	$nameTopic = $_GET['nameTopic'];
 	$getAllDataTable = new GetAllDataTable($link, $nameTable);
 	$data = $getAllDataTable -> getPages($link, $idParent);
-	echo '<h1>Содеражание страницы</h1>';
+	echo '<h2 class="nameSite">'.$nameTopic.'</h2>';
+	echo '<h4>Содеражание страницы</h4>';
 	echo '<ol>';
 	foreach($data as $elem)
 	{
-		echo '<li><a href="#'.$elem['name_text'].'">' . $elem['name_text'] . '</a></li>';
+		echo '<li><a href="#'. $elem['name_text'] .'">' . $elem['name_text'] . '</a></li>'; // Содеражание с сылкой на якорь
 	}
 	echo '</ol>';
 	foreach($data as $elem)
 	{
-		echo $elem['text_content'];
+		echo '<h4><a id="'.$elem['name_text'].'"></a>'. $elem['name_text'] .'</h4>'; //Якорь
+		echo '<p>' . $elem['text_content'] . '</p>';
 	}
 	
 	}

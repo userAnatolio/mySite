@@ -28,7 +28,7 @@ $getAllDataTable = new GetAllDataTable($link, $nameTable);
 if(!empty($_GET['showTable']) and !empty($_GET['idParent']))
 {
 	$idParent = $_GET['idParent'];
-	$arrData = $getAllDataTable -> getPages($link, $idParent);
+	$arrData = $getAllDataTable -> getDataTable($link, $idParent);
 	new ShowTable($arrData, $idParent);
 }
 

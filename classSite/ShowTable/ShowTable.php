@@ -11,8 +11,10 @@ class ShowTable
 	public function showTable($arrData, $idParent)
 	{
 		echo '<h3 id="nameTable">'.$_GET['nameTable'].'</h3>';
-		echo '<table id="sqlTable">';
+		echo '<button class="tableInsert" scope="col" id="insertPage" href="'.$idParent.'">Добавить</button>';
+		echo '<table style="height:70px" class="table table-sm">';
 		$arr = [];
+		
 		foreach($arrData as $elem) 
 		{
 			foreach($elem as $key=>$val)
@@ -26,10 +28,10 @@ class ShowTable
 		
 		foreach($arr as $elem) 
 		{
-			echo '<td class="red" height="50">'.$elem.'</td>';
+			echo '<th scope="col">'.$elem.'</th>';
 		}
-		echo '<td class="red">Изменить</td>';
-		echo '<td class="red" id="insertPage" href="'.$idParent.'">Добавить страницу</td>';
+		echo '<th scope="col">Изменить</th>';
+		
 		echo '</tr>';
 		
 		foreach($arrData as $key=>$elem1) 
@@ -37,12 +39,12 @@ class ShowTable
 			echo '<tr>';
 		foreach($elem1 as $key1 => $val1) 
 		{
-			echo '<td height="50">';
+			echo '<td>';
 			echo $val1;
 			echo '</td>'; 
 			
 		}
-		echo '<td class="red"><li class="elementTable" myattribute="'.$elem1['id'].'" href="'.$idParent.'">Изменить страницу</li></td>';
+		echo '<td width=100px> <button class="elementTable" myattribute="'.$elem1['id'].'" href="'.$idParent.'">Изменить</button></td>';
 		
 		echo '</tr>';
 		}

@@ -16,11 +16,11 @@ if(!empty($_GET['idParent']))
 	$data = $getAllDataTable -> getTopic($link, $idParent);
 	foreach($data as $elem)
 	{
-		echo '<li><a myattribute='.$elem['id'].' class="getPages" href=' . $elem['url_page'].'&id='.$elem['id'].'>' . $elem['name'] . '</a></li>';
+		echo '<li><a myattribute='.$elem['id'].' class="getPages" href="' . $elem['url_page'].'&id='.$elem['id'].'">' . $elem['name'] . '</a></li>';
 	}
 }
 
-
+//*****************Разбиваю темы на подтемы*************************
 if(!empty($_GET['idParent']) and !empty($_GET['getLink']))
 {
 	$idParent = $_GET['idParent'];

@@ -3,7 +3,10 @@ class UpdateTable extends HelpGetTable
 {
 	function __construct($link, $id, $idParent, $nameTable, $nameText, $textContent, $textTitle)
 	{
-		echo $id;
+		$this -> m_query = "SELECT * FROM `topics_site` WHERE id=" . $idParent;
+		$this -> m_link = $link;
+		$this -> sqlQuery(1);
+		$urlPage = $this -> m_data[0]['url_page'];
 		$urlPage = '?nameTable='.$nameTable.'&titlePage='.$textTitle.'&nameText='.$nameText;
 		$this -> m_query = "UPDATE $nameTable SET 
 							`id_parent`='".$idParent."',

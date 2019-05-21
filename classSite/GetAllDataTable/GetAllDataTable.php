@@ -26,8 +26,24 @@ class GetAllDataTable extends HelpGetTable
 		$this -> m_link = $link;
 		$this -> sqlQuery(1);
 		return $this -> m_data;
-		
 	}
+	
+		public function getDataTable($link, $idParent)
+	{
+		$this -> m_query = "SELECT `id`, `name_text` FROM `pages_site` WHERE `id_parent`='".$idParent."'"; //???????????
+		$this -> m_link = $link;
+		$this -> sqlQuery(1);
+		return $this -> getData();
+	}
+	
+	public function getDataForm($link, $idParent, $id)
+	{
+		$this -> m_query = "SELECT `id`, `name_text`, `text_content` FROM `pages_site` WHERE `id_parent`='".$idParent."' AND `id`='".$id."'";
+		$this -> m_link = $link;
+		$this -> sqlQuery(1);
+		return $this -> getData();
+	}
+	
 }
 		
 	
