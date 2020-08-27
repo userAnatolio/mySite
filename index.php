@@ -9,6 +9,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/classSite/'. $class_name . '/' . $class_na
 $onDb = new OnDb('my_site');
 $link = $onDb -> getLink();
 
+
 //***************************************************************************************
 //Эта часть кода работает с файлом .htaccess
 	if($_SERVER['REQUEST_URI'] == '/') $page = 'home';
