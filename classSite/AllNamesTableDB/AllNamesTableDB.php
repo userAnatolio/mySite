@@ -8,4 +8,3 @@ class AllNamesTableDB extends HelpGetTable
 	$this -> sqlQuery(1);
 	}
 }
-?>
