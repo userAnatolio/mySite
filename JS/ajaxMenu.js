@@ -1,4 +1,4 @@
-	$('.elementMenu').hover(function(){
+	$('.elementMenu').hover (function(){
 		var get= $(this).attr('href');
 		$.ajax({
 				type: "GET",
